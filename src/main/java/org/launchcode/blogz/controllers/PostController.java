@@ -65,7 +65,7 @@ public class PostController extends AbstractController {
 		Post entry = postDao.findByUid(uid);
 		int postId = entry.getUid();
 		
-		//String user = postCreator.getUsername();
+	
 		
 		
 		if(postId >=1){
