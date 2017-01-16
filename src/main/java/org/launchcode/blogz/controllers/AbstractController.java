@@ -18,13 +18,14 @@ public abstract class AbstractController {
     public static final String userSessionKey = "user_id";
 
     protected User getUserFromSession(HttpSession session) {
-    	
+    	//request.getSession
         Integer userId = (Integer) session.getAttribute(userSessionKey);
         return userId == null ? null : userDao.findByUid(userId);
     }
     
     protected void setUserInSession(HttpSession session, User user) {
     	session.setAttribute(userSessionKey, user.getUid());
+    
     }
 	
 }

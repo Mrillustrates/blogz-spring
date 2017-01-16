@@ -1,4 +1,4 @@
-package org.launchcode.blogz.controllers;
+ package org.launchcode.blogz.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,13 +18,33 @@ public class AuthenticationController extends AbstractController {
 	}
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
-	public String signup(HttpServletRequest request, Model model) {
+	public String signup(HttpServletRequest request, Model model) {	
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		String verify = request.getParameter("verify");
+    	HttpSession session = request.getSession();
+    	
+		if(!User.isValidUsername(username)){
+			//System.out.println("Invalid usernames");
+			return "signup";
+		}
+		if(!User.isValidPassword(password)) {
+			//System.out.println("invalid password");
+			return "signup";
+		}
+		if(!password.equals(verify)){
+			//System.out.println("Invalid password");
+			return "signup";
+		}
 		
-		// TODO - implement signup
+		User newUser = new User(username,password);
+		userDao.save(newUser);
+		setUserInSession(session, newUser); 
 		
 		return "redirect:blog/newpost";
 	}
-	
+    	
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginForm() {
 		return "login";
@@ -34,10 +54,24 @@ public class AuthenticationController extends AbstractController {
 	public String login(HttpServletRequest request, Model model) {
 		
 		// TODO - implement login
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		User logs = userDao.findByUsername(username);
+    	HttpSession session = request.getSession();
+
 		
-		return "redirect:blog/newpost";
-	}
-	
+		if(logs.isMatchingPassword(password)){
+			
+			setUserInSession(session, logs); 
+			return "redirect:blog/newpost";
+
+		}
+		{
+			return "login";
+
+		}
+
+}
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logout(HttpServletRequest request){
         request.getSession().invalidate();

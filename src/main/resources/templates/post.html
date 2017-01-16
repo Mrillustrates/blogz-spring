@@ -5,6 +5,13 @@
 <body>
 
 	<div th:replace="template :: navigation"></div>
+	<!-- my code starts -->
+	
+	<h3 th:text="${post.title}"></h3>
+	<p th:text ="${post.body}"></p>
+	<p> Written by <em th:text ="${post.author.username}"></em>  on <em th:text = "${#dates.format(post.created, 'yyyy-MM-dd')}"></em> </p>
+
+	
 
 	<!-- TODO - display a single blog post -->
 

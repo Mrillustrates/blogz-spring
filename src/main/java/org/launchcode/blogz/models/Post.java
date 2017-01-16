@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "post")
 public class Post extends AbstractEntity {
-
+	
 	private String title;
 	private String body;
 	private User author;
