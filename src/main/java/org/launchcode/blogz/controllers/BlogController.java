@@ -20,7 +20,7 @@ public class BlogController extends AbstractController {
 		model.addAttribute("posts", postDao.findAll());
 		
 		// TODO - fetch posts and pass to template
-		//.getPosts();
+		
 		return "blog";
 	}
 	

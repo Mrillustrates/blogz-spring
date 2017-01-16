@@ -59,7 +59,7 @@ public class PostController extends AbstractController {
 	public String singlePost(@PathVariable String username, @PathVariable int uid, Model model) {
 		
 		// TODO - implement singlePost
-		//User postCreator = userDao.findByUsername(username);
+	
 		
 		//model.addAttribute
 		Post entry = postDao.findByUid(uid);
@@ -85,7 +85,6 @@ public class PostController extends AbstractController {
 		int findUser = user.getUid();
 		//Post postCreator = postDao.findByAuthorId(findUser);
 		List<Post> posts = user.getPosts();
-		//Post entry = postDao.findByUid(findUser);
 		//List<Post> entry = postDao.findByAuthor(findUser);
 	
 		if(findUser>=1 ){ 
