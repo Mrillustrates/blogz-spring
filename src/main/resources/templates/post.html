@@ -9,9 +9,14 @@
 	
 	<h3 th:text="${post.title}"></h3>
 	<p th:text ="${post.body}"></p>
-	<p> Written by <em th:text ="${post.author.username}"></em>  on <em th:text = "${#dates.format(post.created, 'yyyy-MM-dd')}"></em> </p>
 
+	<p> Written by <em th:text ="${post.author.username}"></em>  on <em th:text = "${#dates.format(post.created, 'yyyy-MM-dd')}"></em> </p>
 	
+	<form method = "post">
+	<label> 
+
+	</label>
+	</form>
 
 	<!-- TODO - display a single blog post -->
 

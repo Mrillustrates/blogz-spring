@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="template :: dochead">
+</head>
+<body>
+
+<div th:replace="template :: navigation"></div>
+<!-- my code starts -->
+
+<h3 th:text="${book.title}"></h3>
+<p th:text ="${book.description}"></p>
+<p th:text ="${book.isbn}"></p>
+<p th:text = "${book.author}"></p>
+<p th:text = "${book.pubdate}"></p>
+
+<!--<p> Written by <em th:text ="${post.author.username}"></em>  on <em th:text = "${#dates.format(post.created, 'yyyy-MM-dd')}"></em> </p>
+-->
+<form method = "post">
+    <label>
+
+    </label>
+</form>
+
+<!-- TODO - display a single blog post -->
+
+</body>
+</html>
